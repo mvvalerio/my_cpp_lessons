@@ -1,7 +1,11 @@
-#include <iostream>
+#include <iostream>                       // "include" serve para incluir uma biblioteca com um grupo de códigos
+#include <cmath>                             // "cmath" uma biblioteca com um grupo de códigos de matemática
+#include "asminhascontas.h"
 using namespace std;
 
-int O_MEU_NUMERO = 10;                       // Números inteiros
+// ** iostream **
+
+/* int O_MEU_NUMERO = 10;                       // Números inteiros
 double O_MEU_NUMERO_REAL = 10.5;             // Números reais
 char O_MEU_CARACTER = 'a';                   // Caracteres
 string O_MEU_TEXTO = "Isto é um texto";      // Texto
@@ -41,7 +45,7 @@ int NUMPORT = 5;                            // Porta de entrada do sensor de hum
 * @author é iê
 * teste
 *
-*/
+
 
 /**
 *
@@ -49,12 +53,13 @@ int NUMPORT = 5;                            // Porta de entrada do sensor de hum
 *
 * @param a numero inteiro
 *
-*/
+
 
 
 int NUM_PORT_SENS_HUM = 5;
-
+*/
  /**
+   
    int main()
 {
     cout << "Hello Mundo!\t";              // Isto é um padeiro a falar
@@ -97,6 +102,7 @@ int main()
     return 0;
 }
 */
+
 //tendo em consideração que a área do circulo
 //é PI * raio * raio, calcular a área do circulo
 //com raio 10
@@ -112,31 +118,46 @@ return 0;
 }
 */
 
-int main()                                 
+/**int main()                                 
 {
     /* int a = 4;
     int b = 5;
     int c = 2;
     int d = 1;
     int conta = a + (b * c) + d;            // Conta de soma e multiplicação "4+(5x2)+1".
-    */
+    
     int a = 5;
     int b = 5;
     int c = 2;
     int d = 1;
-   // int conta = a%c;                        "%" é o resto da sobra da divisão da conta "5/2 = 2.5" ".5 + .5 = 1". 
-   // int conta = ++a;                        "++" adiciona "1"
-   // int conta = --a;                        "--" subtrai "1"
-   /* int conta = a+=2;                       "+=" atribui um valor
+   int conta = a%c;                        "%" é o resto da sobra da divisão da conta "5/2 = 2.5" ".5 + .5 = 1". 
+   int conta = ++a;                        "++" adiciona "1"
+   int conta = --a;                        "--" subtrai "1"
+   int conta = a+=2;                       "+=" atribui um valor
     conta = a+=1;
-    */
+    
     int conta = a&=6;                       //"&" se for digitado o valor de "a" dá o valor de "a", caso for diferente de "a" dará 0.
     cout << conta << endl;
     return 0;
 }
+ ** iostream **
+*/
 
 
 
+
+
+
+
+// ** cmath **
+
+int a=2, b=3;
+
+int main(){
+    cout << f(2) << endl;
+    xpto();
+    return 0;
+}
 
 
 
@@ -157,6 +178,8 @@ int main()
  * "cin" - input
  * 
  * coocatenação é para juntar uma ou mais coisas
+ * 
+ * "pow" faz a conta do número elevado
  * 
  * 
  * 
