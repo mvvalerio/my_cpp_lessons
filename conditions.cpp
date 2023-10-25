@@ -1,7 +1,11 @@
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
+
 using namespace std;
 
-/**int a=10, b=12, c=9;
+/*
+ int a=10, b=12, c=9;
 
 int main(){
 
@@ -58,8 +62,6 @@ int main (){
 }
 */
 
-int numSorte = 69;
-
 int main(){
     int num = 0;
     
@@ -71,7 +73,10 @@ int main(){
     }   
 */
     
- /*
+ 
+srand ((unsigned) time (0));
+int numSorte = 1+(rand()%100);
+
     while(numSorte != num){
         cout << "Qual é o número da sorte? " << endl;
         cin >> num;
@@ -88,5 +93,3 @@ int main(){
 
         return 0;
 }
-*/
-
