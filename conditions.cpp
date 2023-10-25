@@ -21,8 +21,6 @@ return 0;
  * 
  * @return int
  * 
-*/
-
 int main(){
     int num;
 
@@ -36,3 +34,59 @@ int main(){
     }
     return 0;
     } 
+*/
+
+
+/*
+int main (){
+    int num;
+    int result;
+    cout << "Manda um número" << endl;
+    cin >> num;
+    result = num % 2;
+    switch (result)
+    {
+    case 0:
+        cout << "O número é par" << endl;
+        break;
+        
+    default:
+        cout << "O número não é par" << endl;
+        break;       
+    }
+    return 0;
+}
+*/
+
+int numSorte = 69;
+
+int main(){
+    int num = 0;
+    
+
+   /** while (num < 5){                             //O "while" tem de ser verdade o que está dentro dos (), se não forma um loop
+         cout << "Digita um número" << endl;
+         cin >> num;
+
+    }   
+*/
+    
+ /*
+    while(numSorte != num){
+        cout << "Qual é o número da sorte? " << endl;
+        cin >> num;
+        if(numSorte > num){
+            cout << "O número da sorte é maior do que " << num << " burro lol" << endl;
+        } else if (numSorte < num){
+            cout << "O número da sorte é menor do que " << num << " atoleimado lol" << endl;
+        } else {
+            cout << "Parabéns, acertaste o número!" << endl;
+        }
+        }
+        
+        cout << "Acabou banana !" << endl;
+
+        return 0;
+}
+*/
+
