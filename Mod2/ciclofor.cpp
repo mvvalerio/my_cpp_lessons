@@ -21,9 +21,6 @@ int main(){
             cout << "chegou a 10 para quieto banana" << endl;
             break;
         }
-        
-
     }
-
-return 0;
+    return 0;
 }
