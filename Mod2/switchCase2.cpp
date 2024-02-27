@@ -30,12 +30,21 @@ void restofodivision(int a, int b){
 
 void menu(){
 
-    cout << "-------Menu-------" << endl;
+    cout << endl;
+
+    cout << "----------Menu----------" << endl;
+
+    cout << endl;
+
     cout << "1 - Somation" << endl;
     cout << "2 - Multiplication" << endl;
     cout << "3 - Division" << endl;
     cout << "4 - Rest of Division" << endl;
     cout << "5 - Sair" << endl;
+
+    cout << endl;
+
+    cout << "----------Menu----------" << endl;
 
 }
 
@@ -47,12 +56,32 @@ int getOpcao(){
     cout << "Selecione a sua opcao." << endl;
     cin >> opcao;
 
-return opcao;
+    return opcao;
 }
 
-void executaCalc(int c, int x, int y){
+int getValorX(){
 
-    switch(c){
+    int x;
+
+    cout << "Digite o valor para o primeiro parametro: ";
+    cin >> x;
+    
+    return x;
+}
+
+int getValorY(){
+
+    int y;
+
+    cout << "Digite o valor para o segundo parametro: ";
+    cin >> y;
+
+    return y;
+}
+
+void executaCalc(int opcao, int y, int x){
+
+    switch(opcao){
 
         case 1:
             somation(x,y);
@@ -71,17 +100,24 @@ void executaCalc(int c, int x, int y){
             break;
     
         default:
-        break;
+            cout << "Bye Bye" << endl;
+            break;
     }
-    
+
+
 }
+
+
 
 int main(){
 
-    menu();    
-    getOpcao();
-    executaCalc();
+    int opcao;
 
-return 0;
+    menu();    
+    opcao = getOpcao();
+    
+    executaCalc(opcao, getValorY(), getValorX());
+
+    return 0;
 }
 
