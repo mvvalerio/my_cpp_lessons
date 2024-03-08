@@ -2,6 +2,26 @@
 
 using namespace std;
 
+
+struct pessoa{
+
+    int idade;
+    string pNome;
+    string uNome;
+    long cc;
+
+};
+
+pessoa editarPessoa(pessoa x){
+
+    x.pNome = "Oscar";
+    x.uNome = "Pastilha";
+    x.idade = 19;
+    x.cc = 5892572; 
+
+    return x;
+}
+
 int somaNum(int limite){
 
     int soma = 0;
@@ -27,6 +47,10 @@ int getLimit(){
 
 
 int main(){
+
+    pessoa padeiro;
+
+    editarPessoa(padeiro);
 
     int limite = getLimit();
     
