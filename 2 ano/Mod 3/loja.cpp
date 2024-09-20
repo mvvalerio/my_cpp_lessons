@@ -1,5 +1,5 @@
 #include <iostream>
-#include <unistd.h>
+
 using namespace std;
 
 
@@ -120,16 +120,7 @@ void executeshop(int opcao, produto Produtos[], int quantidadeatual){
 
         case 0:
 
-        cout << "Saindo da Lista";
-
-        sleep(1);
-        cout << ".";
-        sleep(1);
-        cout << ".";
-        sleep(1);
-        cout << "."; 
-        
-        cout << endl;
+        cout << "Saindo da Lista... " << endl;
 
         break;
 
