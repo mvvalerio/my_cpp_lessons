@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// --------------------------------------------------------
 
 struct produto {
     string nome;
@@ -9,49 +10,18 @@ struct produto {
     int quantidade;
 };
 
-// ------------------------
+const int prodmax = 10;
+produto Produtos[prodmax];
+int quantidadeatual = 0;
+int opcao;
 
-void menu(){
-
-    system("clear");
-
-    cout << endl;
-
-    cout << "---------- Menu ----------" << endl;
-
-    cout << endl;
-
-    cout << "1 - Adicionar Produto" << endl;
-    cout << "2 - Exibir Produtos" << endl;
-    cout << "3 - Calcular Valor Total do Stock" << endl;
-    cout << "0 - Sair" << endl;
-
-    cout << endl;
-
-    cout << "---------- Menu ----------" << endl;
-
-}
-
-// ------------------------
-
-int getopcao(){
-
-    cout << endl;
-
-    int opcao;
-
-    cout << "Número: ";
-
-    cin >> opcao;
-
-    return opcao;
-}
-
-// ------------------------ 
+// --------------------------------------------------------
 
 void addprod(produto Produtos[], int& quantidadeatual){
-
-    cout << "---------------------------------" << endl;
+    
+    system("clear");
+    
+    cout << "--------------------------------------" << endl;
 
     cout << "Adicione o Nome do Produto: ";
     cin >> Produtos[quantidadeatual].nome;
@@ -60,95 +30,150 @@ void addprod(produto Produtos[], int& quantidadeatual){
 
     cout << "Adicione o Preço do Produto: ";
     cin >> Produtos[quantidadeatual].preco;
-
+    
     cout << endl;
 
     cout << "Adicione a Quantidade do Produto: ";
     cin >> Produtos[quantidadeatual].quantidade;
 
-    cout << "---------------------------------" << endl;
-
+    cout << "--------------------------------------" << endl;
+    
+    quantidadeatual++;
+    
+    cout << "Produto(s) adicionado(s) com sucesso !" << endl;
 
 }
+
+// --------------------------------------------------------
 
 void exibprod(const produto Produtos[], int quantidadeatual){
+    
+    system("clear");
+    
+    if(quantidadeatual == 0){
+        
+        cout << "Nenhum produto adicionado !" << endl;
+        
+    }
+    
+    for(int x = 0; x < quantidadeatual; x++){
 
-    cout << "---------------------------------" << endl;
+        cout << "--------------------------------------" << endl;
 
-    cout << "Nome do Produto: " << Produtos[quantidadeatual].nome << endl;
+        cout << "Nome do Produto: " << Produtos[x].nome << endl;
 
-    cout << endl;
+        cout << endl;
 
-    cout << "Preço do Produto: " << Produtos[quantidadeatual].preco << endl;
+        cout << "Preço do Produto: " << Produtos[x].preco << " EUR" << endl;
 
-    cout << endl;
+        cout << endl;
 
-    cout << "Quantidade do Produto: " << Produtos[quantidadeatual].quantidade << endl;
+        cout << "Quantidade do Produto: " << Produtos[x].quantidade << endl;
 
-    cout << "---------------------------------" << endl;
-
+        cout << "--------------------------------------" << endl;
+    }
+    
 }
 
-float calcvaltotal(const produto Produtos[], int qualidadeatual){
+// --------------------------------------------------------
 
+float calcvaltotal(const produto Produtos[], int quantidadeatual){
+    
+    float total = 0.0;
 
-
-}
-
-// ------------------------
-
-void executeshop(int opcao, produto Produtos[], int quantidadeatual){
-
-    switch (opcao){
-
-        case 1:
-
-        
-
-        break;
-
-
-        case 2:
-
-        break;
-
-
-        case 3:
-
-        break;
-
-
-        case 0:
-
-        cout << "Saindo da Lista... " << endl;
-
-        break;
-
-        default:
-
-        cout << "Opção Inválida, voltando ao menu inicical !" << endl;
-
-        
-
-        break;
-
+    for(int x = 0; x < quantidadeatual; x++){
+        total += Produtos[x].preco * Produtos[x].quantidade;
     }
 
+    return total;
 }
 
+// --------------------------------------------------------
 
-// ------------------------
+void executeshop(int opcao, produto Produtos[], int quantidadeatual = 0){
+
+    do{
+
+        cout << endl;
+
+        cout << "|--------------- MENU ---------------|" << endl;
+
+        cout << "|                                    |" << endl;
+        
+        cout << "|   ! QUANTIDADE PRODUTOS MÁXIMO !   |" << endl;
+        cout << "|               ! 10 !               |" << endl;
+        
+        cout << "|                                    |" << endl;
+        
+        cout << "|------------------------------------|" << endl;
+        
+        cout << "|                                    |" << endl;
+ 
+        cout << "|1 - Adicionar Produto               |" << endl;
+        cout << "|2 - Exibir Produtos                 |" << endl;
+        cout << "|3 - Calcular Valor Total do Stock   |" << endl;
+        cout << "|0 - Sair                            |" << endl;
+
+        cout << "|                                    |" << endl;
+
+        cout << "|--------------- MENU ---------------|" << endl;
+        
+        cout << "Escolha nº ";
+        cin >> opcao;
+        
+        switch(opcao){
+            
+            case 1:
+                
+                if(quantidadeatual < prodmax){
+                    
+                    addprod(Produtos, quantidadeatual);
+                    
+                }else {
+                    
+                    cout << endl;
+                    
+                    cout << "Quantidade máxima atingida !" << endl;
+                    
+                }
+            
+            break;
+            
+            case 2:
+            
+                exibprod(Produtos, quantidadeatual);
+            
+            break;
+            
+            case 3:
+            
+                cout << "Valor Total dos Produtos é de: " << calcvaltotal(Produtos, quantidadeatual) << " EUR" << endl;
+            
+            break;
+            
+            case 0:
+            
+                cout << "A Sair..." << endl;
+            
+            break;
+            
+            default:
+            
+                cout << "Opção Inválida !" << endl;
+            
+            break;
+            
+        }
+            
+    }while(opcao != 0);
+}
+
+    
+// --------------------------------------------------------
 
 int main(){
-
-    produto Produtos[500];
-    int quantidadeatual = 0;
-
-    int opcao;
-    menu();
-    opcao = getopcao();
+    
     executeshop(opcao, Produtos, quantidadeatual);
-
 
     return 0;
 }
