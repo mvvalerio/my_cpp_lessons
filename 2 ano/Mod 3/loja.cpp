@@ -40,7 +40,13 @@ void addprod(produto Produtos[], int& quantidadeatual){
     
     quantidadeatual++;
     
+    system("clear");
+    
     cout << "Produto(s) adicionado(s) com sucesso !" << endl;
+    
+    cout << "--------------------------------------" << endl;
+    
+    cout << endl;
 
 }
 
@@ -60,15 +66,15 @@ void exibprod(const produto Produtos[], int quantidadeatual){
 
         cout << "--------------------------------------" << endl;
 
-        cout << "Nome do Produto: " << Produtos[x].nome << endl;
+        cout << "Nome do Produto " << x+1 << ": " << Produtos[x].nome << endl;
 
         cout << endl;
 
-        cout << "Preço do Produto: " << Produtos[x].preco << " EUR" << endl;
+        cout << "Preço do Produto " << x+1 << ": " << Produtos[x].preco << " EUR" << endl;
 
         cout << endl;
 
-        cout << "Quantidade do Produto: " << Produtos[x].quantidade << endl;
+        cout << "Quantidade do Produto " << x+1 << ": " << Produtos[x].quantidade << endl;
 
         cout << "--------------------------------------" << endl;
     }
@@ -84,17 +90,17 @@ float calcvaltotal(const produto Produtos[], int quantidadeatual){
     for(int x = 0; x < quantidadeatual; x++){
         total += Produtos[x].preco * Produtos[x].quantidade;
     }
+    
+    system("clear");
 
     return total;
 }
 
 // --------------------------------------------------------
 
-void executeshop(int opcao, produto Produtos[], int quantidadeatual = 0){
+void executeshop(int opcao, produto Produtos[], int quantidadeatual){
 
     do{
-
-        cout << endl;
 
         cout << "|--------------- MENU ---------------|" << endl;
 
@@ -117,6 +123,8 @@ void executeshop(int opcao, produto Produtos[], int quantidadeatual = 0){
         cout << "|                                    |" << endl;
 
         cout << "|--------------- MENU ---------------|" << endl;
+        
+        cout << endl;
         
         cout << "Escolha nº ";
         cin >> opcao;
@@ -148,10 +156,14 @@ void executeshop(int opcao, produto Produtos[], int quantidadeatual = 0){
             case 3:
             
                 cout << "Valor Total dos Produtos é de: " << calcvaltotal(Produtos, quantidadeatual) << " EUR" << endl;
+                
+                cout << endl;
             
             break;
             
             case 0:
+            
+                cout << endl;
             
                 cout << "A Sair..." << endl;
             
@@ -159,7 +171,11 @@ void executeshop(int opcao, produto Produtos[], int quantidadeatual = 0){
             
             default:
             
+                system("clear");
+            
                 cout << "Opção Inválida !" << endl;
+                
+                cout << endl;
             
             break;
             
