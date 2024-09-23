@@ -59,6 +59,8 @@ void exibprod(const produto Produtos[], int quantidadeatual){
     if(quantidadeatual == 0){
         
         cout << "Nenhum produto adicionado !" << endl;
+
+        cout << endl;
         
     }
     
@@ -162,10 +164,14 @@ void executeshop(int opcao, produto Produtos[], int quantidadeatual){
             break;
             
             case 0:
+
+                system("clear");
             
                 cout << endl;
             
                 cout << "A Sair..." << endl;
+
+                cout << endl;
             
             break;
             
