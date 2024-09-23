@@ -22,11 +22,39 @@ using namespace std;
 }
 */
 
- 
+/* ---------------------------------------------------------
 
+                           Classes
+
+   --------------------------------------------------------- */
+
+class Carro{
+
+public:
+
+    int velocidade;
+    int velocidadeMax;
+    string nome;
+    void insere(string x, int y); // funções dentro de class são métodos
+    void mostra();
+
+    void setNmodelo(int x){
+        n_modelo = x;
+    }
+
+private:
+
+    int n_modelo;
+
+};
 
 int main(){
 
+    Carro carro1;
+
+    carro1.nome = "BMW";
+
+    carro1.setNmodelo(320);
 
     return 0;
 }
