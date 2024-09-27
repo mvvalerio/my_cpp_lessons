@@ -1,2 +1,2 @@
 # my_cpp_lessons
-Lições básicas de C++
+(Not so) Basic Lessons of C++
