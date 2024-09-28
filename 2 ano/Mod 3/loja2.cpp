@@ -27,6 +27,54 @@ const string nomeFicheiro = "produtos.txt";
 
 // --------------------------------------------------------
 
+void arquivoDB() {
+    
+    ifstream arquivo(nomeFicheiro);
+    
+    if (!arquivo) {
+        
+        // O ficheiro não existe
+        
+        char opcao;
+        
+        cout << "O ficheiro de base de dados não foi encontrado." << endl;
+        
+        cout << endl;
+        
+        cout << "Quer criar um ficheiro novo de base de dados? (S/N): ";
+        
+        cin >> opcao;
+
+        if (opcao == 'S' || opcao == 's') {
+            
+            // Cria um novo ficheiro
+            ofstream novoArquivo(nomeFicheiro);
+            
+            novoArquivo.close();
+            
+            system("clear");
+            
+            cout << "Ficheiro de base de dados criado com sucesso!" << endl;
+            
+            cout << "---------------------------------------------" << endl;
+            
+            cout << endl;
+            
+        } else {
+            
+            // Sai do programa
+            
+            system("clear");
+            
+            cout << "A sair..." << endl;
+            
+            exit(0); // Termina o programa
+        }
+    }
+}
+
+// --------------------------------------------------------
+
 void lerprod(produto Produtos[], int& quantidadeatual){
 
     ifstream arquivo(nomeFicheiro);
@@ -38,7 +86,7 @@ void lerprod(produto Produtos[], int& quantidadeatual){
      while (arquivo.good() && quantidadeatual < prodmax) {    
         produto prod;
         string line;
-
+    
        
         if (getline(arquivo, line)) {
             
@@ -101,6 +149,8 @@ void escreverprod(produto Produtos[], int quantidadeatual){
 // --------------------------------------------------------
 
 void deleteprod(produto Produtos[], int quantidadeatual){
+
+    system("clear");
     
     int idProduto;
     
@@ -117,8 +167,12 @@ void deleteprod(produto Produtos[], int quantidadeatual){
             
             Produtos[x].estado = 'd';
             escreverprod(Produtos, quantidadeatual);
+
+            system("clear");
            
             cout << "Produto de ID " << idProduto << " apagado com sucesso !" << endl;
+
+            cout << endl;
             
             return;  // o bloco de código não vai para o cout a baixo porque lê todos os produtos disponiveis e se caso houver o id vai dar return a nada ou seja não vai para o cout a baixo
         }
@@ -196,6 +250,8 @@ void modificaprod(produto Produtos[], int quantidadeatual){
             escreverprod(Produtos, quantidadeatual);
             
             cout << endl;
+
+            system("clear");
             
             cout << "Produto com ID " << idProduto << " modificado com sucesso !" << endl;
             
@@ -218,6 +274,7 @@ void addprod(produto Produtos[], int& quantidadeatual, int& ultimoID){
 
     cout << "Adicione o Nome do Produto: ";
     cin >> Produtos[quantidadeatual].nome;
+    getline(cin, Produtos[quantidadeatual].nome);
 
     cout << endl;
 
@@ -428,6 +485,8 @@ void executeshop(int opcao, produto Produtos[], int quantidadeatual){
 int main(){
     
     system("clear");
+    
+    arquivoDB();
     
     executeshop(opcao, Produtos, quantidadeatual);
 
