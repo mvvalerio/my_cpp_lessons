@@ -224,13 +224,6 @@ void modificaprod(produto Produtos[], int quantidadeatual){
         
         if(idProduto == Produtos[x].id){
             
-            cout << "Escolha um novo nome para o produto." << endl;
-            
-            cout << "Novo Nome: ";
-            cin >> Produtos[x].nome;
-            
-            cout << endl;
-            
             cout << "Escolha uma nova quantidade para o produto." << endl;
             
             cout << "Nova Quantidade: ";
