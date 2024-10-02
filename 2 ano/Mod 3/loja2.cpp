@@ -75,9 +75,9 @@ void arquivoDB() {
 
 // --------------------------------------------------------
 
-void lerprod(produto Produtos[], int& quantidadeatual){
+void lerprod(produto Produtos[]){
 
-    ifstream arquivo(nomeFicheiro);
+    ifstream arquivo(nomeFicheiro);       // input filestream vai ler dos arquivos
     
     if (!arquivo) return;
 
@@ -108,6 +108,10 @@ void lerprod(produto Produtos[], int& quantidadeatual){
 
             Produtos[quantidadeatual] = prod;
             quantidadeatual++; 
+            
+            if (prod.id > ultimoID) {
+                ultimoID = prod.id;
+            }
         }
     }
     
@@ -118,11 +122,9 @@ void lerprod(produto Produtos[], int& quantidadeatual){
 
 // --------------------------------------------------------
 
-void escreverprod(produto Produtos[], int quantidadeatual){
+void escreverprod(produto Produtos[]){
  
     ofstream arquivo(nomeFicheiro);  // output file stream, escreve nos arquivos
-    
-    if(arquivo.is_open()){
         
         for(int x = 0; x < quantidadeatual; x++){
             
@@ -136,19 +138,11 @@ void escreverprod(produto Produtos[], int quantidadeatual){
         
         arquivo.close();
         
-        cout << "Produtos salvos com sucesso !" << endl;
-        
-    } else {
-        
-        cout << "Oops.. parece que aconteceu um imprevisto para escrever no ficheiro !" << endl;
-        
-    }
-    
 }
 
 // --------------------------------------------------------
 
-void deleteprod(produto Produtos[], int quantidadeatual){
+void deleteprod(produto Produtos[]){
 
     system("clear");
     
@@ -166,7 +160,7 @@ void deleteprod(produto Produtos[], int quantidadeatual){
         if(idProduto == Produtos[x].id){
             
             Produtos[x].estado = 'd';
-            escreverprod(Produtos, quantidadeatual);
+            escreverprod(Produtos);
 
             system("clear");
            
@@ -207,7 +201,7 @@ char valorestado(){
 
 // --------------------------------------------------------
 
-void modificaprod(produto Produtos[], int quantidadeatual){
+void modificaprod(produto Produtos[]){
     
     system("clear");
     
@@ -240,7 +234,7 @@ void modificaprod(produto Produtos[], int quantidadeatual){
             
             Produtos[x].estado = valorestado();
 
-            escreverprod(Produtos, quantidadeatual);
+            escreverprod(Produtos);
             
             cout << endl;
 
@@ -259,14 +253,14 @@ void modificaprod(produto Produtos[], int quantidadeatual){
 
 // --------------------------------------------------------
 
-void addprod(produto Produtos[], int& quantidadeatual, int& ultimoID){
+void addprod(produto Produtos[]){
     
     system("clear");
     
     Produtos[quantidadeatual].id = ++ultimoID;
 
     cout << "Adicione o Nome do Produto: ";
-    cin >> Produtos[quantidadeatual].nome;
+    cin.ignore();
     getline(cin, Produtos[quantidadeatual].nome);
 
     cout << endl;
@@ -287,7 +281,7 @@ void addprod(produto Produtos[], int& quantidadeatual, int& ultimoID){
     
     quantidadeatual++;
     
-    escreverprod(Produtos, quantidadeatual);
+    escreverprod(Produtos);
     
     system("clear");
     
@@ -301,7 +295,7 @@ void addprod(produto Produtos[], int& quantidadeatual, int& ultimoID){
 
 // --------------------------------------------------------
 
-void consultprod(const produto Produtos[], int quantidadeatual){
+void consultprod(const produto Produtos[]){
     
     system("clear");
     
@@ -311,38 +305,39 @@ void consultprod(const produto Produtos[], int quantidadeatual){
 
         cout << endl;
         
-    }
+    } else {
     
-    for(int x = 0; x < quantidadeatual; x++){
+        for(int x = 0; x < quantidadeatual; x++){
 
-        cout << "--------------------------------------" << endl;
+            cout << "--------------------------------------" << endl;
         
-        cout << "ID do Produto: " << Produtos[x].id << endl;
+            cout << "ID do Produto: " << Produtos[x].id << endl;
         
-        cout << endl;
+            cout << endl;
 
-        cout << "Nome do Produto: " << Produtos[x].nome << endl;
+            cout << "Nome do Produto: " << Produtos[x].nome << endl;
 
-        cout << endl;
+            cout << endl;
 
-        cout << "Preço do Produto: " << Produtos[x].preco << " EUR" << endl;
+            cout << "Preço do Produto: " << Produtos[x].preco << " EUR" << endl;
 
-        cout << endl;
+            cout << endl;
 
-        cout << "Quantidade do Produto: " << Produtos[x].quantidade << endl;
+            cout << "Quantidade do Produto: " << Produtos[x].quantidade << endl;
         
-        cout << endl;
+            cout << endl;
         
-        cout << "Estado do Produto: " << Produtos[x].estado << endl;
+            cout << "Estado do Produto: " << Produtos[x].estado << endl;
 
-        cout << "--------------------------------------" << endl;
+            cout << "--------------------------------------" << endl;
+        }
     }
     
 }
 
 // --------------------------------------------------------
 
-float calcvaltotal(const produto Produtos[], int quantidadeatual){
+float calcvaltotal(const produto Produtos[]){
     
     float total = 0.0;
 
@@ -362,9 +357,9 @@ float calcvaltotal(const produto Produtos[], int quantidadeatual){
 
 // --------------------------------------------------------
 
-void executeshop(int opcao, produto Produtos[], int quantidadeatual){
+void executeshop(produto Produtos[]){
     
-    lerprod(Produtos, quantidadeatual);
+    lerprod(Produtos);
 
     do{
 
@@ -407,7 +402,7 @@ void executeshop(int opcao, produto Produtos[], int quantidadeatual){
                 
                 if(quantidadeatual < prodmax){
                     
-                    addprod(Produtos, quantidadeatual, ultimoID);
+                    addprod(Produtos);
                     
                 }else {
                     
@@ -421,13 +416,13 @@ void executeshop(int opcao, produto Produtos[], int quantidadeatual){
             
             case 2:
             
-                consultprod(Produtos, quantidadeatual);
+                consultprod(Produtos);
             
             break;
             
             case 3:
             
-                cout << "Valor Total dos Produtos é de: " << calcvaltotal(Produtos, quantidadeatual) << " EUR" << endl;
+                cout << "Valor Total dos Produtos é de: " << calcvaltotal(Produtos) << " EUR" << endl;
                 
                 cout << endl;
             
@@ -435,13 +430,13 @@ void executeshop(int opcao, produto Produtos[], int quantidadeatual){
             
             case 4:
             
-                modificaprod(Produtos, quantidadeatual);
+                modificaprod(Produtos);
             
             break;
             
             case 5:
             
-                deleteprod(Produtos, quantidadeatual);
+                deleteprod(Produtos);
             
             break;
             
@@ -481,7 +476,7 @@ int main(){
     
     arquivoDB();
     
-    executeshop(opcao, Produtos, quantidadeatual);
+    executeshop(Produtos);
 
     return 0;
 }
