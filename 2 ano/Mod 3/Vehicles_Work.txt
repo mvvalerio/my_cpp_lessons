@@ -1,0 +1,152 @@
+veiculo.h - file name
+----------------------------------------------------------
+#ifndef VEICULO_H
+#define VEICULO_H
+
+#include <iostream>
+
+using namespace std;
+
+
+class Vehicle{
+    
+    protected:
+    
+        string name;
+    
+    public:
+    
+        Vehicle(string name);
+    
+        virtual void showDetails();  
+    
+};
+
+#endif
+
+----------------------------------------------------------
+----------------------------------------------------------
+
+veiculo.cpp - file name
+----------------------------------------------------------
+#include "veiculo.h"
+
+Vehicle::Vehicle(string name) : name(name){
+    
+}
+
+void Vehicle::showDetails(){
+    
+}
+
+----------------------------------------------------------
+----------------------------------------------------------
+
+mota.h - file name
+----------------------------------------------------------
+#ifndef MOTA_H
+#define MOTA_H
+
+#include "veiculo.h"
+
+class Bike : public Vehicle{
+    
+    protected:
+    
+    string handlebar;
+    
+    public:
+    
+    Bike(string name, string handlebar);
+    
+    virtual void showDetails();
+    
+};
+
+#endif
+
+----------------------------------------------------------
+----------------------------------------------------------
+
+mota.cpp - file name
+----------------------------------------------------------
+#include "mota.h"
+
+Bike::Bike(string name, string handlebar) : Vehicle(name), handlebar(handlebar){
+    
+}
+
+void Bike::showDetails(){
+    cout << "--------------------------------------" << endl;
+    
+    cout << "Bike name is: " << name << endl;
+    cout << "Bike handlebar is: " << handlebar << endl;
+    
+    cout << "--------------------------------------" << endl;
+}
+
+----------------------------------------------------------
+----------------------------------------------------------
+
+carro.h - file name
+----------------------------------------------------------
+#ifndef CARRO_H
+#define CARRO_H
+
+#include "veiculo.h"
+
+class Car : public Vehicle{
+    
+    protected:
+    
+    int N_of_doors;
+    
+    public:
+    
+    Car(string name, int N_of_doors);
+    
+    virtual void showDetails();
+    
+};
+
+#endif
+
+----------------------------------------------------------
+----------------------------------------------------------
+
+carro.cpp - file name
+----------------------------------------------------------
+#include "carro.h"
+
+Car::Car(string name, int N_of_doors) : Vehicle(name), N_of_doors(N_of_doors){
+    
+}
+
+void Car::showDetails(){
+    cout << "--------------------------------------" << endl;
+    
+    cout << "Car name is: " << name << endl;
+    cout << "Car number of doors is: " << N_of_doors << endl;
+    
+}
+
+----------------------------------------------------------
+----------------------------------------------------------
+
+main.cpp - file name
+----------------------------------------------------------
+#include "mota.h"
+#include "carro.h"
+
+int main(){
+    
+    Car car1("Audi R8 V10 Bi-Turbo", 2);
+    Bike bike1("BMW M1000RR", "sport");
+    
+    car1.showDetails();
+    bike1.showDetails();
+
+}
+
+----------------------------------------------------------
+----------------------------------------------------------
